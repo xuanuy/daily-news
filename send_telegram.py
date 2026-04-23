@@ -1,9 +1,17 @@
-import json, urllib.request, urllib.error, os
+import json, urllib.request, urllib.error, os, glob
 
 TOKEN = os.environ["TELEGRAM_TOKEN"]
 CHAT_ID = os.environ["TELEGRAM_CHAT_ID"]
 
-with open("news.md", "r") as f:
+files = sorted(glob.glob("news_*.md"))
+if not files:
+    print("ERROR: No news_*.md file found")
+    exit(1)
+
+latest = files[-1]
+print(f"Sending: {latest}")
+
+with open(latest, "r") as f:
     message = f.read()
 
 chunks = [message[i:i+4000] for i in range(0, len(message), 4000)]
