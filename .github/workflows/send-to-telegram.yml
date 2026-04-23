@@ -2,7 +2,7 @@ name: Send News to Telegram
 on:
   push:
     paths:
-      - news.md
+      - 'news_*.md'
     branches:
       - main
 
