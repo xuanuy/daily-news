@@ -3,6 +3,7 @@ on:
   push:
     paths:
       - 'news_*.md'
+      - 'security_*.md'
     branches:
       - main
 
